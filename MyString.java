@@ -8,7 +8,7 @@ public class MyString {
         //System.out.println(countChar(hello, 'l'));
         //System.out.println(countChar(hello, 'z'));
         //System.out.println(spacedString("hello"));
-        System.out.println(remove("committee","meet"));
+        System.out.println(remove("a   r   e   t   i   i   n","train"));
         //// Put your other tests here.
     }
 

@@ -127,7 +127,7 @@ public class Scrabble {
 			}
 			boolean isValid = isWordInDictionary(input) && MyString.subsetOf(input, hand);
 			if (isValid) {
-				hand = MyString.remove(input, hand);
+				hand = MyString.remove(hand, input);
 				score += wordScore(input);
 				System.out.println(input + " earned " + wordScore(input) + " points. Total: " + score + " points.");
 			} else {
@@ -140,9 +140,9 @@ public class Scrabble {
 
 		}
 		if (hand.length() == 0) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points.");
+	        System.out.println("Ran out of letters. Total score: " + score + " points");
 		} else {
-			System.out.println("End of hand. Total score: " + score + " points.");
+			System.out.println("End of hand. Total score: " + score + " points");
 		}
 	}
 
@@ -176,9 +176,9 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		////testBuildingTheDictionary();  
-		testScrabbleScore();    
+		////testScrabbleScore();    
 		////testCreateHands();  
-		//testPlayHands();
+		testPlayHands();
 		//playGame();
 	}
 
@@ -205,8 +205,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		playHand("ocostrza");
+		playHand("a r e t i i n");
 		playHand("arbffip");
-		playHand("aretiin");
+		//playHand("aretiin");
 	}
 }
