@@ -50,7 +50,7 @@ public class Scrabble {
 	public static boolean isWordInDictionary(String word) {
 		//// Replace the following statement with your code
 		for (int i=0; i<NUM_OF_WORDS; i++) {
-			if (DICTIONARY[i] != null && word.toLowerCase().equals(DICTIONARY[i])) {
+			if (DICTIONARY[i] != null && DICTIONARY[i].equals(word)) {
 				return true;
 			}
 		}
@@ -67,9 +67,13 @@ public class Scrabble {
 
 		for (int i=0; i<word.length(); i++) {
 			char ch = word.charAt(i);
-			int letterIndex = ch - 'a';
-			score += SCRABBLE_LETTER_VALUES[letterIndex];
+			if (ch >= 'a' && ch <= 'z') {
+				int letterIndex = ch - 'a';
+				score += SCRABBLE_LETTER_VALUES[letterIndex];
+			}
 		}
+
+		score *= word.length();
 
 		if (word.length() == HAND_SIZE) {
 			score += 50;
@@ -169,10 +173,10 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		////testBuildingTheDictionary();  
-		////testScrabbleScore();    
+		testScrabbleScore();    
 		////testCreateHands();  
 		//testPlayHands();
-		playGame();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {

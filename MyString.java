@@ -7,8 +7,8 @@ public class MyString {
         //System.out.println(countChar(hello, 'h'));
         //System.out.println(countChar(hello, 'l'));
         //System.out.println(countChar(hello, 'z'));
-        //System.out.println(spacedString(hello));
-        System.out.println(remove("meet","committee"));
+        //System.out.println(spacedString("hello"));
+        System.out.println(remove("committee","meet"));
         //// Put your other tests here.
     }
 
@@ -72,11 +72,10 @@ public class MyString {
         String newStr = "";
         for (int i = 0; i<str.length(); i++) {
             newStr += str.charAt(i);
-            if (i != str.length()) {
+            if (i != str.length() - 1) {
                 newStr += " ";
             }
         }
-
         return newStr;
     }
   
@@ -112,16 +111,16 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-        String remainingStr2 = str2;
-    
-        for (int i = 0; i < str1.length(); i++) {
-            char currentChar = str1.charAt(i);
-            int index = remainingStr2.indexOf(currentChar);
+        String result = str1;
+ 
+        for (int i = 0; i < str2.length(); i++) {
+            char currentChar = str2.charAt(i);
+            int index = result.indexOf(currentChar);
             if (index != -1) {
-                remainingStr2 = remainingStr2.substring(0, index) + remainingStr2.substring(index + 1);
+                result = result.substring(0, index) + result.substring(index + 1);
             }
         }
-        return remainingStr2; // Return the updated version of str2
+        return result; 
     }
 
     /**
