@@ -109,7 +109,6 @@ public class Scrabble {
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
 	public static void playHand(String hand) {
-		int n = hand.length();
 		int score = 0;
 		// Declares the variable in to refer to an object of type In, and initializes it to represent
 		// the stream of characters coming from the keyboard. Used for reading the user's inputs.   
@@ -130,15 +129,20 @@ public class Scrabble {
 			if (isValid) {
 				hand = MyString.remove(input, hand);
 				score += wordScore(input);
+				System.out.println(input + " earned " + wordScore(input) + " points. Total: " + score + " points.");
 			} else {
-				System.out.println("the input is invalid, entre another word");
+				if (!isWordInDictionary(input)) {
+					System.out.println("Invalid word: '" + input + "' is not in the dictionary.");
+				} else if (!MyString.subsetOf(input, hand)) {
+					System.out.println("Invalid word: '" + input + "' cannot be formed from the current hand.");
+				}
 			}
 
 		}
 		if (hand.length() == 0) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points");
+	        System.out.println("Ran out of letters. Total score: " + score + " points.");
 		} else {
-			System.out.println("End of hand. Total score: " + score + " points");
+			System.out.println("End of hand. Total score: " + score + " points.");
 		}
 	}
 
@@ -162,7 +166,6 @@ public class Scrabble {
 				String hand = createHand();
 				playHand(hand);
 			} else if (input.equals("e")) {
-				System.out.println("Thank you for playing.");
 				break;
 			} else {
 				System.out.println("Error, invalid input. Enter n to deal a new hand, or e to end the game:" );
